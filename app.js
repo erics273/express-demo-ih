@@ -1,6 +1,5 @@
 var express = require('express');
 var path = require('path');
-var bodyParser = require('body-parser');
 
 var app = express();
 
@@ -17,7 +16,7 @@ app.get('/', function(req, res) {
  * THIS IS WHERE WE WILL BE IMPLEMENTING OUR CUSTOM ROUTES
  */
 
-//route to render our form (views/user-info-form.js)
+//route to render our form (views/user-info-form.ejs)
 app.get('/get-user-info', (req, res) => {
   res.render('user-info-form');
 });

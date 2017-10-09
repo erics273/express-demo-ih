@@ -22,5 +22,18 @@ app.get('/get-user-info', (req, res) => {
   res.render('user-info-form');
 });
 
+//route that processes data from the from and displays it on the screen
+app.get('/display-user-info', (req, res) => {
+  let name      = req.query.name;
+  let age       = req.query.age;
+  let superhero = req.query.superhero;
+
+  res.send(`
+    Your name is ${name}
+    Your age is ${age}
+    Your favorite superhero is ${superhero}
+  `)
+});
+
 //start the express application
 app.listen(process.env.PORT || '3000');

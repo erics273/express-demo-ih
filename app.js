@@ -1,11 +1,14 @@
 var express = require('express');
 var path = require('path');
+var bodyParser = require('body-parser');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //default route: renders views/index.ejs
 app.get('/', function(req, res) {
@@ -43,6 +46,17 @@ app.get('/display-user-info', (req, res) => {
 //route to render our login page (view/login.ejs)
 app.get('/login', (req, res) => {
   res.render('login')
+});
+
+//route that handles the POST request to /logn from the form in view/login.ejs
+//since it was a post request we need to access the from data from the body of the request
+//instead of the query paramters in the URL. We use req.body instead of req.query to access the form data
+//in this case
+app.post('/login', (req, res) => {
+  let email    = req.body.email;
+  let password = req.body.password;
+  
+  res.send(`Email: ${email}, Password: ${password}`);
 });
 
 //start the express application

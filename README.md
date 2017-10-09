@@ -1,0 +1,2 @@
+# Express Demo
+This repository is intented to serve as a starter project. This project enforces concepts related to how forms submit their data to a server and how that server processes that data. The project will focus on GET vs POST what those verbs mean for the data being sent.
